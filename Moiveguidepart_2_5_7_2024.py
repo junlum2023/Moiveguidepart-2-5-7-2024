@@ -1,7 +1,6 @@
-FILENAME = "movies.txt"
-def write_movies(movies):
-    with open("Movies.txt", "w") as file:
-        file.write("Cat on a Hot Tin Roof\nOn the Waterfront\nand Monty Python and the Holy Grail\n")
+
+with open("Movies.txt", "w") as file:
+    file.write("Cat on a Hot Tin Roof\nOn the Waterfront\nand Monty Python and the Holy Grail\n")
         
 def populate_list(file_name):
     movie_list = []
@@ -26,16 +25,16 @@ def add_title(movie_list, title, file_name):
     movie_list.append(title)
     with open(file_name, "a") as file:
         file.write(title + "\n")
-    print(f"\n{title} has been added to the list")
+    print(f"\n'{title}' has been added to the list")
     
 def delete_title(movie_lst, index, file_name):
     if 1 <= index <= len(movie_list):
         deleted_title = movie_list.pop(index - 1)
         with open(file_name, "w") as file:
             file.write("\n".join(movie_list))
-        print(f"\n {deleted_title} has been deleted from the list")
+        print(f"\n'{deleted_title}' has been deleted from the list")
     else:
-        print(f"\nInvalid index number. No movie was deleted")
+        print(f"\nInvalid number. No movie was deleted.")
         
 def main():
     movie_file = "movies.txt"
@@ -48,19 +47,19 @@ def main():
         if choice == "List":
            display_titles(movie_list)
         elif choice == "add":
-            new_title = input("Enter the new movie title:")
+            new_title = input("Enter the new movie title: ")
             add_title(movie_list, new_title, movie_file)
             display_titles(movie_list)
         elif choice == "delete":
             display_titles(movie_list)
-            index = int(input("Enter the number of the movie title you would to delete:"))
+            index = int(input("Enter the number of the movie title you would to delete: "))
             delete_title(movie_list, index, movie_file)
             display_titles(movie_list)
         elif choice == "exit":
             print("Exiting program")
             break
         else:
-            print("invalid choice, please try again")
+            print("Invalid choice, Please choose a valid option.")
             
 if __name__ == "__main__":
     main()
